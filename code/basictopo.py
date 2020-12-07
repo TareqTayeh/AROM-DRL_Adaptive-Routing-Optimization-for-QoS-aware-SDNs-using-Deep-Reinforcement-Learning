@@ -77,6 +77,22 @@ def myNetwork():
 
     info( '*** Post configure switches and hosts\n')
 
+    info( '*** Establishing D-ITG Log Host\n')
+    h7.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h7.cmdPrint('./ITGLog')
+
+    info( '*** Establishing Destination Servers / Hosts\n')
+    h5.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h5.cmdPrint('./ITGRecv')
+    h6.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h6.cmdPrint('./ITGRecv')
+
+    info( '*** Running D-ITG Traffic Flows\n')
+    h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h1.cmdPrint('./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.4 UDP -X 10.0.0.4 UDP -x h1toh5_recv_log_file') &
+    h2.cmdPrint('./ITGSend script_file_h2toh6 -l h2send_log_file -L 10.0.0.4 UDP -X 10.0.0.4 UDP -x h2toh6_recv_log_file')
+
+    info( '*** Starting CLI\n')
     CLI(net)
     net.stop()
 
