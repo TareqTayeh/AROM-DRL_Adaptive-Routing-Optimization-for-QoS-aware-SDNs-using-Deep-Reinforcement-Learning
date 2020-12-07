@@ -53,6 +53,7 @@ def myNetwork():
     net.addLink(h6, s3)
     net.addLink(s1, s2)
     net.addLink(s3, s6)
+    net.addLink(s5, s6)
     net.addLink(s6, s4)
     net.addLink(s4, s3)
     net.addLink(h7, s4)
@@ -90,7 +91,10 @@ def myNetwork():
     info( '*** Running D-ITG Traffic Flows\n')
     h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
     h1.cmdPrint('./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.4 UDP -X 10.0.0.4 UDP -x h1toh5_recv_log_file &')
+    h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
     h2.cmdPrint('./ITGSend script_file_h2toh6 -l h2send_log_file -L 10.0.0.4 UDP -X 10.0.0.4 UDP -x h2toh6_recv_log_file')
+
+
 
     info( '*** Starting CLI\n')
     CLI(net)
