@@ -79,13 +79,13 @@ def myNetwork():
 
     info( '*** Establishing D-ITG Log Host\n')
     h7.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h7.cmdPrint('./ITGLog')
+    h7.cmdPrint('./ITGLog &')
 
     info( '*** Establishing Destination Servers / Hosts\n')
     h5.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h5.cmdPrint('./ITGRecv')
+    h5.cmdPrint('./ITGRecv &')
     h6.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h6.cmdPrint('./ITGRecv')
+    h6.cmdPrint('./ITGRecv &')
 
     info( '*** Running D-ITG Traffic Flows\n')
     h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
