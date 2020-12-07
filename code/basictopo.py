@@ -21,7 +21,7 @@ def myNetwork():
                       controller=RemoteController,
                       ip='127.0.0.1',
                       protocol='tcp',
-                      port=6633)
+                      port=6653)
 
     info( '*** Add switches\n')
     s5 = net.addSwitch('s5', cls=OVSKernelSwitch)
@@ -53,6 +53,7 @@ def myNetwork():
     net.addLink(h6, s3)
     net.addLink(s1, s2)
     net.addLink(s3, s6)
+    net.addLink(s5, s6)
     net.addLink(s6, s4)
     net.addLink(s4, s3)
     net.addLink(h7, s4)
@@ -66,6 +67,7 @@ def myNetwork():
     for controller in net.controllers:
         controller.start()
 
+
     info( '*** Starting switches\n')
     net.get('s5').start([c0])
     net.get('s2').start([c0])
@@ -77,6 +79,42 @@ def myNetwork():
 
     info( '*** Post configure switches and hosts\n')
 
+    info( '*** pingall\n')
+    net.pingAll()
+
+    info( '*** Establishing D-ITG Log Host\n')
+    h7.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h7.cmdPrint('./ITGLog &')
+    h7.cmdPrint('h7PID=$!')
+
+    info( '*** Establishing Destination Servers / Hosts\n')
+    h5.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h5.cmdPrint('./ITGRecv &')
+    h5.cmdPrint('h5PID=$!')
+    #h6.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h6.cmdPrint('./ITGRecv &')
+    #h6.cmdPrint('h6PID=$!')
+
+    info( '*** Running D-ITG Traffic Flows\n')
+    h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    h1.cmdPrint('./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h1toh5_recv_log_file') # &')
+    h1.cmdPrint('h1PID=$!')
+    #h2.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h2.cmdPrint('./ITGSend script_file_h2toh6 -l h2send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h2toh6_recv_log_file')
+    #h2.cmdPrint('h2PID=$!')
+
+    #h1.cmdPrint('while ps -p $h1PID > /dev/null; do sleep 1; done; h5.cmd(kill -INT $h5PID)')
+    h5.cmdPrint('kill -INT $h5PID')
+    h6.cmdPrint('kill -INT $h6PID')
+    h7.cmdPrint('kill -INT $h7PID')
+
+    h7.cmdPrint('./ITGDec h1toh5_recv_log_file')
+    h7.cmdPrint('./ITGDec h1send_log_file')
+    #h7.cmdPrint('./ITGDec h2toh6_recv_log_file')
+    #h7.cmdPrint('./ITGDec h2send_log_file')
+
+
+    info( '*** Starting CLI\n')
     CLI(net)
     net.stop()
 
