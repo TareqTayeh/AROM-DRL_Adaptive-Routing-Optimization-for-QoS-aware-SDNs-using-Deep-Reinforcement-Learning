@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# D-ITG Test Script  
+# 
+# Executes a number of flows with destination of h5
+###########################################################################
+
+# format -a <destination ip> -rp <destination port> -C <Constant Packet rate pps> -c<packet size> -T <protocol>
+-a 10.0.0.5 -rp 10001 -C 1000 -c 512 -T UDP
+-a 10.0.0.5 -rp 10002 -C 2000 -c 512 -T UDP
+-a 10.0.0.5 -rp 10003 -C 3000 -c 512 -T UDP
+-a 10.0.0.5 -rp 10004 -C 1000 -c 512 -T TCP
+
+
