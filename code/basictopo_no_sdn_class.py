@@ -56,7 +56,7 @@ class MyTopo( Topo ):
         self.addLink( rightSwitch6, centralSwitch7 )
         #Switch3 --- Host5 & Host6
         self.addLink( rightSwitch3, rightHost5 )
-		self.addLink( rightSwitch3, rightHost6 )
+        self.addLink( rightSwitch3, rightHost6 )
 		#Switch4 --- Host7 & Host8
         self.addLink( rightSwitch4, rightHost7 )
 		self.addLink( rightSwitch4, rightHost8 )
