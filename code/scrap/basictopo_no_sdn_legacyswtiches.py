@@ -57,20 +57,6 @@ def myNetwork():
 
     info( '*** Starting network\n')
     net.build()
-    # info( '*** Starting controllers\n')
-    # for controller in net.controllers:
-    #     controller.start()
-
-    # info( '*** Starting switches\n')
-    # net.get('s2').start([])
-    # net.get('s6').start([])
-    # net.get('s3').start([])
-    # net.get('s7').start([])
-    # net.get('s4').start([])
-    # net.get('s1').start([])
-    # net.get('s5').start([])
-
-    # info( '*** Post configure switches and hosts\n')
 
     CLI(net)
     net.stop()
