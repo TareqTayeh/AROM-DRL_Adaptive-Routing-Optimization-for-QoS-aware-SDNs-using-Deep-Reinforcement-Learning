@@ -60,6 +60,8 @@ class MyTopo( Topo ):
 		#Switch4 --- Host7 & Host8
         self.addLink( rightSwitch4, rightHost7 )
         self.addLink( rightSwitch4, rightHost8 )
+        #Switch3 --- Switch4
+        self.addLink( rightSwitch3, rightSwitch4 )
 
 
 topos = { 'mytopo': ( lambda: MyTopo() ) }
