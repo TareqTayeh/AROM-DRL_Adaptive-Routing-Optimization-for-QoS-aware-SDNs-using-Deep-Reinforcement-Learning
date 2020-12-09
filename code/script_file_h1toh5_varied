@@ -1,0 +1,4 @@
+-a 10.0.0.5 -rp 10001 -C 1000 -c 512 -T TCP
+-a 10.0.0.5 -rp 10002 -d 5000 -T UDP -C 1000 -c 512
+-a 10.0.0.5 -rp 10003 -T UDP VoIP -x G.711.2 -h RTP -VAD
+-a 10.0.0.5 -rp 10004 -T UDP DNS

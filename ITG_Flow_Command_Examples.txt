@@ -1,12 +1,14 @@
-
+*** XTERM TIPS!!!
+You can paste into xterm, using 'Shift' + 'Insert'
+you can scroll up and down xterm using 'Shift' + 'PgUp' /or/ 'PgDn'
 
 *** Establishing D-ITG Log Host
 cd ~/D-ITG-2.8.1-r1023/bin
-./ITGLog & # having trouble try running with 0>/dev/null &'
+./ITGLog
 
 *** Establishing Destination Servers / Hosts
 cd ~/D-ITG-2.8.1-r1023/bin
-./ITGRecv &
+./ITGRecv
 
 *** Running D-ITG Traffic Flows
 cd ~/D-ITG-2.8.1-r1023/bin
