@@ -2,6 +2,7 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
+import os
 
 class BasicNoSDNTopo( Topo ):
 
@@ -67,22 +68,23 @@ def run():
     net.start()
 
     # Add basic flows without specifying the table value and check the flow working via the ovs-appctl command
-    info( '*** sh ovs-ofctl dump-flows s1\n')
-    info( '*** sh ovs-ofctl add-flow s1 action=normal\n')
-    info( '*** sh ovs-ofctl dump-flows s1\n')
+    #info( '*** sh ovs-ofctl dump-flows s1\n')
+    #info( '*** sh ovs-ofctl add-flow s1 action=normal\n')
+    #info( '*** sh ovs-ofctl dump-flows s1\n')
     # Hosts 1 and 2 able to ping each other now
-    info( '*** h1 ping h2 -c 3\n')
+    #info( '*** h1 ping h2 -c 3\n')
     # Add basic flows to all remaining switches
-    info( '*** sh ovs-ofctl add-flow s2 action=normal\n')
-    info( '*** sh ovs-ofctl add-flow s3 action=normal\n')
-    info( '*** sh ovs-ofctl add-flow s4 action=normal\n')
-    info( '*** sh ovs-ofctl add-flow s5 action=normal\n')
-    info( '*** sh ovs-ofctl add-flow s6 action=normal\n')
-    info( '*** sh ovs-ofctl add-flow s7 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s2 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s3 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s4 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s5 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s6 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s7 action=normal\n')
     # Confirm all hosts able to ping each other now
-    net.pingAll()
+    #net.pingAll()
 
     CLI(net)
+    os.system('ls')
     net.stop()
 
 # if the script is run directly (sudo python basictopo_no_sdn.py):
