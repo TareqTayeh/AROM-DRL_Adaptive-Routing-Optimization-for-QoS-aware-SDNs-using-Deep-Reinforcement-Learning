@@ -2,7 +2,7 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
-import os
+from mininet.node import OVSSwitch
 
 class BasicNoSDNTopo( Topo ):
 
@@ -68,6 +68,7 @@ def run():
     net.start()
 
     # Add basic flows without specifying the table value and check the flow working via the ovs-appctl command
+    s1.dpctl("add-flow action=normal")
     #info( '*** sh ovs-ofctl dump-flows s1\n')
     #info( '*** sh ovs-ofctl add-flow s1 action=normal\n')
     #info( '*** sh ovs-ofctl dump-flows s1\n')
@@ -84,7 +85,6 @@ def run():
     #net.pingAll()
 
     CLI(net)
-    os.system('ls')
     net.stop()
 
 # if the script is run directly (sudo python basictopo_no_sdn.py):
