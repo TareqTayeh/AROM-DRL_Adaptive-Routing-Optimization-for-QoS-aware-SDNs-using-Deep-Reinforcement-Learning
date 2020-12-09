@@ -15,7 +15,8 @@ def myNetwork():
     net = Mininet( topo=None,
                    build=False,
                    ipBase='10.0.0.0/8',
-                   autoSetMacs=True )
+                   autoSetMacs=True,
+                   controller=None )
 
     info( '*** Adding controller\n' )
     info( '*** Add switches\n')
