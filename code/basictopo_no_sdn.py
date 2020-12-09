@@ -21,6 +21,7 @@ class BasicNoSDNTopo( Topo ):
         rightHost6 = self.addHost( 'h6' )
         rightHost7 = self.addHost( 'h7' )
         rightHost8 = self.addHost( 'h8' )
+        logHost9 = self.addHost( 'h9' )
 
         # Add switches, name and numbers 
         leftSwitch1 = self.addSwitch( 's1' )
@@ -61,6 +62,8 @@ class BasicNoSDNTopo( Topo ):
         self.addLink( rightSwitch4, rightHost8 )
         #Switch3 --- Switch4
         #self.addLink( rightSwitch3, rightSwitch4 )
+        #Switch7 --- Host9
+        self.addLink( centralSwitch7, logHost9 )
 
 
 def run():
