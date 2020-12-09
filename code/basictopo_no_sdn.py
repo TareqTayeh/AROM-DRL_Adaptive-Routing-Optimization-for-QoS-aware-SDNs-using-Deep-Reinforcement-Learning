@@ -71,7 +71,7 @@ def run():
 
     # Add basic flows without specifying the table value and check the flow working via the ovs-appctl command
     #info( '*** sh ovs-ofctl dump-flows s1\n')
-    #leftSwitch1.dpctl("add-flow action=normal")
+    leftSwitch1.dpctl("add-flow action=normal")
     #info( '*** sh ovs-ofctl add-flow s1 action=normal\n')
     #info( '*** sh ovs-ofctl dump-flows s1\n')
     # Hosts 1 and 2 able to ping each other now
