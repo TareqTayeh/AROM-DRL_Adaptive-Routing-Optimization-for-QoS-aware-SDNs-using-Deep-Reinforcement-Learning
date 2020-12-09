@@ -6,6 +6,8 @@ from mininet.node import OVSSwitch
 
 class BasicNoSDNTopo( Topo ):
 
+    leftSwitch1
+
     def __init__( self ):
         "Create custom topo."
 
