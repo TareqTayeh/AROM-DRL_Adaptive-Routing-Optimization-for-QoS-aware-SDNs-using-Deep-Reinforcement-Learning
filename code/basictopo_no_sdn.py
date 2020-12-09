@@ -66,8 +66,6 @@ def run():
     net = Mininet(topo=BasicNoSDNTopo(), controller=None, autoSetMacs=True)
     net.start()
 
-    CLI(net)
-
     # Add basic flows without specifying the table value and check the flow working via the ovs-appctl command
     info( '*** sh ovs-ofctl dump-flows s1\n')
     info( '*** sh ovs-ofctl add-flow s1 action=normal\n')
@@ -82,9 +80,9 @@ def run():
     info( '*** sh ovs-ofctl add-flow s6 action=normal\n')
     info( '*** sh ovs-ofctl add-flow s7 action=normal\n')
     # Confirm all hosts able to ping each other now
-    #net.pingAll()
-    CLI.do_pingall()
+    net.pingAll()
 
+    CLI(net)
     net.stop()
 
 # if the script is run directly (sudo python basictopo_no_sdn.py):
