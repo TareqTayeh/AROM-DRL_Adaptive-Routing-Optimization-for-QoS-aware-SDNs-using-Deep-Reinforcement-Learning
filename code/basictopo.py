@@ -88,26 +88,26 @@ def myNetwork():
     #server = {hosts[ 5 ],hosts[ 6 ],hosts[ 7 ]}
 
 
-    info( '*** Establishing D-ITG Log Host\n')
-    h7.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h7.cmdPrint('./ITGLog &')# if having trouble try running with 0>/dev/null &'
-    h7.cmdPrint('echo $!')
+    #info( '*** Establishing D-ITG Log Host\n')
+    #h7.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h7.cmdPrint('./ITGLog &')# if having trouble try running with 0>/dev/null &'
+    #h7.cmdPrint('echo $!')
     #h7.cmdPrint('h7PID=$!')
     #h7.cmdPrint('echo $h7PID')
 
-    info( '*** Establishing Destination Servers / Hosts\n')
-    h5.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h5.cmdPrint('./ITGRecv &')
+    #info( '*** Establishing Destination Servers / Hosts\n')
+    #h5.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h5.cmdPrint('./ITGRecv &')
     #h5.cmdPrint('h5PID=$!')
     #h5.cmdPrint('echo $h5PID')
-    h6.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h6.cmdPrint('./ITGRecv &')
+    #h6.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h6.cmdPrint('./ITGRecv &')
     #h6.cmdPrint('h6PID=$!')
     #h6.cmdPrint('echo $h6PID')
 
     #this is here to give the ITG Log and Receiver hosts time to launch properly
-    info( '*** ITG Receiver and Log hosts launching ....')
-    time.sleep(30)
+    #info( '*** ITG Receiver and Log hosts launching ....')
+    #time.sleep(30)
 
     #info( '*** Launching ITGSend in daemon mode\n')
     #h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
@@ -116,23 +116,23 @@ def myNetwork():
     #h2.cmdPrint('./ITGSend -Q')
 
     # Ensure that 'script_file_h1toh5' is under '~/D-ITG-2.8.1-r1023/bin'
-    info( '*** Running D-ITG Traffic Flows\n')
-    h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h1.cmdPrint('./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h1toh5_recv_log_file &')
+    #info( '*** Running D-ITG Traffic Flows\n')
+    #h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h1.cmdPrint('./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h1toh5_recv_log_file &')
     #h1.cmdPrint('h1PID=$!')
     #h1.cmdPrint('echo $h1PID')
-    h2.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
-    h2.cmdPrint('./ITGSend script_file_h2toh6 -l h2send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h2toh6_recv_log_file &')
+    #h2.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
+    #h2.cmdPrint('./ITGSend script_file_h2toh6 -l h2send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h2toh6_recv_log_file &')
     #h2.cmdPrint('h2PID=$!')
     #h2.cmdPrint('echo $h2PID')
 
     #to be used in conjunction with kill commands.  This provides time for flows to complete prior to kill commands.
-    time.sleep(240)
+    #time.sleep(240)
 
     #info( '*** Manual CLI - background D-ITG processes for ITGRecv and ITGLog still running...')
-    #nfo( ' to close ITG servers issue the following commands in CLI: ')
+    #info( ' to close ITG servers issue the following commands in CLI: ')
     #info( '"> h5 bash"')
-    #nfo( '"$ ps"')
+    #info( '"$ ps"')
     #info( '"$ kill -INT <enter PID for Recv or Log server here>"')
     #info( 'you will then be instructed to finish with Ctrl-C')
     #info( '"$ exit"')
@@ -142,17 +142,16 @@ def myNetwork():
     #h1.cmdPrint('while ps -p $h1PID > /dev/null; do sleep 1; done')
 
     #kill commands are to be used it the CLI is not initialize above
-    h5.cmdPrint('kill -INT $h5PID')
-    h6.cmdPrint('kill -INT $h6PID')
-    h7.cmdPrint('kill -INT $h7PID')
+    #h5.cmdPrint('kill -KILL $h5PID')
+    #h6.cmdPrint('kill -KILL $h6PID')
+    #h7.cmdPrint('kill -KILL $h7PID')
 
-    info(' *** ITGDec launching ... this may take a minute.')
-    time.sleep(20)
-    h7.cmdPrint('./ITGDec h1toh5_recv_log_file')
-    h7.cmdPrint('./ITGDec h1send_log_file')
-    h7.cmdPrint('./ITGDec h2toh6_recv_log_file')
-    h7.cmdPrint('./ITGDec h2send_log_file')
-
+    #info(' *** ITGDec launching ... this may take a minute.')
+    #time.sleep(20)
+    #h7.cmdPrint('./ITGDec h1toh5_recv_log_file')
+    #h7.cmdPrint('./ITGDec h1send_log_file')
+    #h7.cmdPrint('./ITGDec h2toh6_recv_log_file')
+    #h7.cmdPrint('./ITGDec h2send_log_file')
 
     info( '*** Starting CLI\n')
     CLI(net)

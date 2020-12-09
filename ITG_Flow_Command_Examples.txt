@@ -1,0 +1,20 @@
+
+
+*** Establishing D-ITG Log Host
+cd ~/D-ITG-2.8.1-r1023/bin
+./ITGLog & # having trouble try running with 0>/dev/null &'
+
+*** Establishing Destination Servers / Hosts
+cd ~/D-ITG-2.8.1-r1023/bin
+./ITGRecv &
+
+*** Running D-ITG Traffic Flows
+cd ~/D-ITG-2.8.1-r1023/bin
+ ./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h1toh5_recv_log_file
+
+***Close host servers
+Ctrl - C
+
+*** ITGDec on host
+./ITGDec h1toh5_recv_log_file
+./ITGDec h1send_log_file
