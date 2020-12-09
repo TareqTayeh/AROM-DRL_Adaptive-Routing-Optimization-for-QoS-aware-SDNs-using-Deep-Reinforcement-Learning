@@ -115,6 +115,7 @@ def myNetwork():
     #h2.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
     #h2.cmdPrint('./ITGSend -Q')
 
+    # Ensure that 'script_file_h1toh5' is under '~/D-ITG-2.8.1-r1023/bin'
     info( '*** Running D-ITG Traffic Flows\n')
     h1.cmdPrint('cd ~/D-ITG-2.8.1-r1023/bin')
     h1.cmdPrint('./ITGSend script_file_h1toh5 -l h1send_log_file -L 10.0.0.7 UDP -X 10.0.0.7 UDP -x h1toh5_recv_log_file &')
