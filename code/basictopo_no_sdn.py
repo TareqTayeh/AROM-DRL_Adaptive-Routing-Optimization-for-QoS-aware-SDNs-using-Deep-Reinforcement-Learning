@@ -1,79 +1,93 @@
-#!/usr/bin/python
-
+from mininet.topo import Topo
 from mininet.net import Mininet
-from mininet.node import Controller, RemoteController, OVSController
-from mininet.node import CPULimitedHost, Host, Node
-from mininet.node import OVSSwitch, UserSwitch
-from mininet.node import IVSSwitch
-from mininet.cli import CLI
 from mininet.log import setLogLevel, info
-from mininet.link import TCLink, Intf
-from subprocess import call
+from mininet.cli import CLI
+from mininet.node import OVSSwitch
 
-def myNetwork():
+class BasicNoSDNTopo( Topo ):
 
-    net = Mininet( topo=None,
-                   build=False,
-                   ipBase='10.0.0.0/8',
-                   controller=None,
-                   autoSetMacs=True)
+    def __init__( self ):
+        "Create custom topo."
 
-    info( '*** Add switches\n')
-    s7 = net.addSwitch('s7', cls=OVSSwitch)
-    s3 = net.addSwitch('s3', cls=OVSSwitch)
-    s5 = net.addSwitch('s5', cls=OVSSwitch)
-    s1 = net.addSwitch('s1', cls=OVSSwitch)
-    s4 = net.addSwitch('s4', cls=OVSSwitch)
-    s6 = net.addSwitch('s6', cls=OVSSwitch)
-    s2 = net.addSwitch('s2', cls=OVSSwitch)
+        # Initialize topology
+        Topo.__init__( self )
 
-    info( '*** Add hosts\n')
-    h2 = net.addHost('h2', cls=Host, ip='10.0.0.2', defaultRoute=None)
-    h6 = net.addHost('h6', cls=Host, ip='10.0.0.6', defaultRoute=None)
-    h7 = net.addHost('h7', cls=Host, ip='10.0.0.7', defaultRoute=None)
-    h3 = net.addHost('h3', cls=Host, ip='10.0.0.3', defaultRoute=None)
-    h5 = net.addHost('h5', cls=Host, ip='10.0.0.5', defaultRoute=None)
-    h4 = net.addHost('h4', cls=Host, ip='10.0.0.4', defaultRoute=None)
-    h8 = net.addHost('h8', cls=Host, ip='10.0.0.8', defaultRoute=None)
-    h1 = net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
+        # Add hosts, name and numbers 
+        leftHost1 = self.addHost( 'h1' )
+        leftHost2 = self.addHost( 'h2' )
+        leftHost3 = self.addHost( 'h3' )
+        leftHost4 = self.addHost( 'h4' )
+        rightHost5 = self.addHost( 'h5' )
+        rightHost6 = self.addHost( 'h6' )
+        rightHost7 = self.addHost( 'h7' )
+        rightHost8 = self.addHost( 'h8' )
 
-    info( '*** Add links\n')
-    net.addLink(h1, s1)
-    net.addLink(s1, h2)
-    net.addLink(s2, h3)
-    net.addLink(s2, h4)
-    net.addLink(s2, s5)
-    net.addLink(s1, s5)
-    net.addLink(s5, s7)
-    net.addLink(s7, s6)
-    net.addLink(s6, s3)
-    net.addLink(s6, s4)
-    net.addLink(s3, h5)
-    net.addLink(s3, h6)
-    net.addLink(s4, h7)
-    net.addLink(s4, h8)
+        # Add switches, name and numbers 
+        leftSwitch1 = self.addSwitch( 's1' )
+        leftSwitch2 = self.addSwitch( 's2' )
+        rightSwitch3 = self.addSwitch( 's3' )
+        rightSwitch4 = self.addSwitch( 's4' )
+        leftSwitch5 = self.addSwitch( 's5' )
+        rightSwitch6 = self.addSwitch( 's6' )
+        centralSwitch7 = self.addSwitch( 's7' )
+        
 
-    info( '*** Starting network\n')
-    net.build()
-    # info( '*** Starting controllers\n')
-    # for controller in net.controllers:
-    #     controller.start()
+        # Add links
+        #Host1 --- Switch1
+        self.addLink( leftHost1, leftSwitch1 )
+        #Host2 --- Switch1
+        self.addLink( leftHost2, leftSwitch1 )
+        #Switch1 --- Switch2 & Switch5
+        #self.addLink( leftSwitch1, leftSwitch2 )
+        self.addLink( leftSwitch1, leftSwitch5 )
+        #Host3 --- Switch2
+        self.addLink( leftHost3, leftSwitch2 )
+        #Host4 --- Switch2
+        self.addLink( leftHost4, leftSwitch2 )
+        #Switch2 --- Switch5
+        self.addLink( leftSwitch2, leftSwitch5 )
+        #Switch5 --- Switch6 & Switch7
+        #self.addLink( leftSwitch5, rightSwitch6 )
+        self.addLink( leftSwitch5, centralSwitch7 )
+        #Switch6 --- Switch3 & Switch4 & Switch 7
+        self.addLink( rightSwitch6, rightSwitch3 )
+        self.addLink( rightSwitch6, rightSwitch4 )
+        self.addLink( rightSwitch6, centralSwitch7 )
+        #Switch3 --- Host5 & Host6
+        self.addLink( rightSwitch3, rightHost5 )
+        self.addLink( rightSwitch3, rightHost6 )
+        #Switch4 --- Host7 & Host8
+        self.addLink( rightSwitch4, rightHost7 )
+        self.addLink( rightSwitch4, rightHost8 )
+        #Switch3 --- Switch4
+        #self.addLink( rightSwitch3, rightSwitch4 )
 
-    # info( '*** Starting switches\n')
-    # net.get('s7').start([])
-    # net.get('s3').start([])
-    # net.get('s5').start([])
-    # net.get('s1').start([])
-    # net.get('s4').start([])
-    # net.get('s6').start([])
-    # net.get('s2').start([])
 
-    # info( '*** Post configure switches and hosts\n')
+def run():
+    net = Mininet(topo=BasicNoSDNTopo(), controller=None, autoSetMacs=True)
+    net.start()
+
+    # Add basic flows without specifying the table value and check the flow working via the ovs-appctl command
+    #info( '*** sh ovs-ofctl dump-flows s1\n')
+    #leftSwitch1.dpctl("add-flow action=normal")
+    #info( '*** sh ovs-ofctl add-flow s1 action=normal\n')
+    #info( '*** sh ovs-ofctl dump-flows s1\n')
+    # Hosts 1 and 2 able to ping each other now
+    #info( '*** h1 ping h2 -c 3\n')
+    # Add basic flows to all remaining switches
+    #info( '*** sh ovs-ofctl add-flow s2 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s3 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s4 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s5 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s6 action=normal\n')
+    #info( '*** sh ovs-ofctl add-flow s7 action=normal\n')
+    # Confirm all hosts able to ping each other now
+    #net.pingAll()
 
     CLI(net)
     net.stop()
 
+# if the script is run directly (sudo python basictopo_no_sdn.py):
 if __name__ == '__main__':
-    setLogLevel( 'info' )
-    myNetwork()
-
+    setLogLevel('info')
+    run()
