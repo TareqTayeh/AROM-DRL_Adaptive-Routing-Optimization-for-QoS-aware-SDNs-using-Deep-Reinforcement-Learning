@@ -5,7 +5,7 @@ sudo mn --custom basictopo_no_sdn_class.py --topo=mytopo --controller=none --mac
 
 from mininet.topo import Topo
 
-class MyTopo( Topo ):
+class BasicNoSDNTopo( Topo ):
 
     def __init__( self ):
         "Create custom topo."
@@ -64,4 +64,4 @@ class MyTopo( Topo ):
         #self.addLink( rightSwitch3, rightSwitch4 )
 
 
-topos = { 'mytopo': ( lambda: MyTopo() ) }
+topos = { 'mytopo': ( lambda: BasicNoSDNTopo() ) }
