@@ -63,7 +63,7 @@ class BasicNoSDNTopo( Topo ):
 
 
 def run():
-    net = Mininet(topo=BasicNoSDNTopo())
+    net = Mininet(topo=BasicNoSDNTopo(), controller=none, autoSetMacs=True)
     net.start()
 
     CLI(net)
