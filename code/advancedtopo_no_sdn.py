@@ -107,7 +107,7 @@ class AdvancedNoSDNTopo( Topo ):
 
 
 def run():
-    net = Mininet(topo=BasicNoSDNTopo(), controller=None, autoSetMacs=True)
+    net = Mininet(topo=AdvancedNoSDNTopo(), controller=None, autoSetMacs=True)
     net.start()
 
     # Add basic flows without specifying the table value and check the flow working via the ovs-appctl command
