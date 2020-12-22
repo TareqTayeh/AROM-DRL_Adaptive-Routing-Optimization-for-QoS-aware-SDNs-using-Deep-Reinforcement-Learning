@@ -1,4 +1,4 @@
-# Adaptive-Routing-Optimization-for-QoS-aware-Software-Defined-Networks-using-Deep-Reinforced-Learning
+# AROM-DRL: Adaptive Routing Optimization Model for QoS-Aware Software Defined Networks using Deep Reinforcement Learning
 
 <p float="left">
  <img src="https://img.shields.io/badge/Floodlight-v1.2-brightgreen"/>
