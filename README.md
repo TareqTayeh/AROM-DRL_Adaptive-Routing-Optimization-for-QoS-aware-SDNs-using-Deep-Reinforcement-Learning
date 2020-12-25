@@ -19,13 +19,13 @@ This is all found in `Code_User_Manual`.
 2. Upgrade Floodlight v1.1 to Floodlight v1.2
     * https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide
 3. Download and install D-ITG
-  * http://sdnopenflow.blogspot.com/2015/05/using-of-d-itg-traffic-generator-in.html
+    * http://sdnopenflow.blogspot.com/2015/05/using-of-d-itg-traffic-generator-in.html
 4. Place our code folder (or git clone repo) inside the launched VM
 5. To build and run the non-SDN network described in the paper:
-  * Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/`
-  * Run sudo python `advancedtopo_no_sdn.py` in terminal 
-  * Once the network is built, you will be prompted with the Mininet CLI. Run `sh ovs-ofctl add-flow [switch] action=normal` in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: "sh ovs-ofctl add-flow s1 action=normal"
-  * Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo.
+    * Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/`
+    * Run sudo python `advancedtopo_no_sdn.py` in terminal 
+    * Once the network is built, you will be prompted with the Mininet CLI. Run `sh ovs-ofctl add-flow [switch] action=normal` in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: "sh ovs-ofctl add-flow s1 action=normal"
+    * Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo.
 
 <ol>
   `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/`
