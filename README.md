@@ -57,10 +57,10 @@ This is all found in `Code_User_Manual`.
       <li> Using Mininet CLI, open xterm instances for each network host, including host 17 (ITG Log server) </li>
       <li> Inside each xterm instance, go to where the D-ITG folder is installed E.g. "cd ~/D-ITG-2.8.1-r1023/bin" </li>
       <li> Initiate Log host on h17, the ITGLog Server E.g. “./ITGLog” </li>
-      <li> Initiate each even host # from 2 to 16 as ITGRecv E.g. “./ITGRecv” <li/>
+      <li> Initiate each even host # from 2 to 16 as ITGRecv E.g. “./ITGRecv” </li>
       <li> Initiate hosts 1, 3, 5 and 11 as ITGSend E.g. “./ITGSend [the_associated_quickflow_script>] -l [name_of_sender_log_file] -L 10.0.0.17 UDP -X 10.0.0.17  TCP -x [name_of_receiver_log_file] </li>
       <li> All flows will be marked as finished when done </li>
-      <li> Terminate each ITGRecv host, followed by the ITGLog host (ITGSend hosts terminate by themselves after sending flows) E.g. “^C” (to terminate each ITGRecv and ITGLog instances) <li/>
+      <li> Terminate each ITGRecv host, followed by the ITGLog host (ITGSend hosts terminate by themselves after sending flows) E.g. “^C” (to terminate each ITGRecv and ITGLog instances) </li>
       <li> NOTE:  If you have not moved the quickflow scripts from our code package into the D-ITG-2.8.2-r1023/bin folder, you will have to include the full path to their location (~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/D-ITG flow scripts/) </li>
     </ul>
   </li>
