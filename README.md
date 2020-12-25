@@ -35,7 +35,7 @@ This is all found in `Code_User_Manual`.
   <li>To build and run the non-SDN network described in the paper:
     <ul>
       <li> Navigate to code by running 
-      ```
+      ```bash
       cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/
       ``` 
       </li>
