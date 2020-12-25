@@ -28,6 +28,16 @@ Benchmark SDN Architecture:
   <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/SDN_Topo_Diagram.png" width="600">
 </p>
 
+D-ITG multi-flows traffic generatation scripts run in this work:
+<p align="center">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/DITGMultiFlow_withKey.png" width="600">
+</p>
+
+Partial ITGDec report for multi-flows from Host 11 to Host 2:
+<p align="center">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/ITGDecExample.png" width="600">
+</p>
+
 
 ### User Manual
 This is all found in `Code_User_Manual`.
