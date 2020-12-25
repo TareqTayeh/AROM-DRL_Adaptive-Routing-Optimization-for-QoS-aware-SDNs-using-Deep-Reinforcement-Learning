@@ -34,9 +34,9 @@ This is all found in `Code_User_Manual`.
   <li>Place our code folder (or git clone repo) inside the launched VM </li>
   <li>To build and run the non-SDN network described in the paper:
     <ul>
-      <li> Navigate to code by running ***cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/*** </li>
-      <li> Run `sudo python advancedtopo_no_sdn.py` in terminal </li>
-      <li> Once the network is built, you will be prompted with the Mininet CLI. Run `sh ovs-ofctl add-flow [switch] action=normal`  in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: `sh ovs-ofctl add-flow s1 action=normal`  </li>
+      <li> Navigate to code by running "cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/"" </li>
+      <li> Run sudo python "advancedtopo_no_sdn.py" in terminal </li>
+      <li> Once the network is built, you will be prompted with the Mininet CLI. Run "sh ovs-ofctl add-flow [switch] action=normal" in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: "sh ovs-ofctl add-flow s1 action=normal"  </li>
       <li> Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo </li>
     </ul>
   </li>
@@ -45,12 +45,38 @@ This is all found in `Code_User_Manual`.
       <li> https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM </li>
     </ul>
   </li>
-  <li>Place our code folder (or git clone repo) inside the launched VM </li>
   <li>To build and run the SDN network described in the paper:
     <ul>
-      <li> Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/` </li>
-      <li> Run `sudo python advancedtopo_with_sdn.py` in terminal </li>
+      <li> Navigate to code by running "cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/" </li>
+      <li> Run "sudo python advancedtopo_with_sdn.py in terminal" </li>
       <li> You will then be prompted with the Mininet CLI, proceed with Step 8 </li>
     </ul>
   </li>
+  <li>To run the D-ITG flows for either network:
+    <ul>
+      <li> Using Mininet CLI, open xterm instances for each network host, including host 17 (ITG Log server) </li>
+      <li> Inside each xterm instance, go to where the D-ITG folder is installed E.g. "cd ~/D-ITG-2.8.1-r1023/bin" </li>
+      <li> Initiate Log host on h17, the ITGLog Server E.g. “./ITGLog” </li>
+      <li> Initiate each even host # from 2 to 16 as ITGRecv E.g. “./ITGRecv” <li/>
+      <li> Initiate hosts 1, 3, 5 and 11 as ITGSend E.g. “./ITGSend [the_associated_quickflow_script>] -l [name_of_sender_log_file] -L 10.0.0.17 UDP -X 10.0.0.17  TCP -x [name_of_receiver_log_file] </li>
+      <li> All flows will be marked as finished when done </li>
+      <li> Terminate each ITGRecv host, followed by the ITGLog host (ITGSend hosts terminate by themselves after sending flows) E.g. “^C” (to terminate each ITGRecv and ITGLog instances) <li/>
+      <li> NOTE:  If you have not moved the quickflow scripts from our code package into the D-ITG-2.8.2-r1023/bin folder, you will have to include the full path to their location (~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/D-ITG flow scripts/) </li>
+    </ul>
+  </li>
+  <li>To decode and analyze the produced log files and generate a report
+    <ul>
+      <li> Can utilize ITGDec on the desired log file from any host E.g. “./ITGDec [name_of_log_file]” </li>
+      <li> Inside each xterm instance, go to where the D-ITG folder is installed E.g. "cd ~/D-ITG-2.8.1-r1023/bin" </li>
+      <li> To generate .dat files, which are utilized by ITGPlot E.g. “./ITGDec [name_of_log_file] [QoS_metric] [time] [name_of_outputted_.dat_file]” where [QoS_metric] is either -p (packet loss), -j (jitter), -d (delay), -b (throughput), and where [time] is the sampling interval in milliseconds </li>
+    </ul>
+  </li>
+  <li>To generate the plots via ITGPlot
+    <ul>
+      <li> Run “~/D-ITG-2.8.1-r1023/src/ITGPlot/ITGplot  [input.dat] [number_of_the_flow]” where [number_of_the_flow] is an optional value, if nothing is indicated, all flows are plotted on the same graph </li>
+      <li> This generates a .eps file (the resulting plot file) </li>
+      <li> This file is located in “~/D-ITG-2.8.1-r1023/src/ITGPlot/” </li>
+    </ul>
+  </li>
+  <li> Once all simulation activities are completed, exit the Mininet CLI “mininet> exit” and run “sudo mn -c” prior to running any further simulations to end and delete the simulation. </li>
 </ol>
