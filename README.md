@@ -16,80 +16,37 @@ Software Defined Networking (SDN) has been recognized as the next-generation net
 This is all found in `Code_User_Manual`.
 1. Launch Oracle VM Virtual box, followed by launching the Floodlight-Ubuntu VM, which is already configured with Mininet v.2.2.1, Floodlight v1.1, and OpenvSwitch. 
     *  https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM
-2. Upgrade Floodlight v1.1 to Floodlight v1.2
+2. Upgrade Floodlight v1.1 to Floodlight v1.2.
     * https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide
-3. Download and install D-ITG
+3. Download and install D-ITG.
     * http://sdnopenflow.blogspot.com/2015/05/using-of-d-itg-traffic-generator-in.html
-4. Place our code folder (or git clone repo) inside the launched VM
+4. Place our code folder (or git clone repo) inside the launched VM.
 5. To build and run the non-SDN network described in the paper:
     * Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/`
-    * Run sudo python `advancedtopo_no_sdn.py` in terminal 
+    * Run sudo python `advancedtopo_no_sdn.py` in terminal.
     * Once the network is built, you will be prompted with the Mininet CLI. Run `sh ovs-ofctl add-flow [switch] action=normal` in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: "sh ovs-ofctl add-flow s1 action=normal"
     * Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo.
-
-<ol>
-  `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/`
-  <li>Launch Oracle VM Virtual box, followed by launching the Floodlight-Ubuntu VM, which is already configured with Mininet v.2.2.1, Floodlight v1.1, and OpenvSwitch. 
-  	<ul>
-  		<li> https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM </li>
-  	</ul>
-  </li>
-  <li>Upgrade Floodlight v1.1 to Floodlight v1.2
-  	<ul>
-  		<li> https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide </li>
-  	</ul>
-  </li>
-  <li>Download and install D-ITG
-    <ul>
-      <li> http://sdnopenflow.blogspot.com/2015/05/using-of-d-itg-traffic-generator-in.html </li>
-    </ul>
-  </li>
-  <li>Place our code folder (or git clone repo) inside the launched VM </li>
-  <li>To build and run the non-SDN network described in the paper:
-    <ul>
-      <li> Navigate to code by running "cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/" </li>
-      <li> Run sudo python "advancedtopo_no_sdn.py" in terminal </li>
-      <li> Once the network is built, you will be prompted with the Mininet CLI. Run "sh ovs-ofctl add-flow [switch] action=normal" in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: "sh ovs-ofctl add-flow s1 action=normal"  </li>
-      <li> Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo </li>
-    </ul>
-  </li>
-  <li>Launch the Floodlight controller in Terminal (Only applies when you are running the SDN simulation)
-    <ul>
-      <li> https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM </li>
-    </ul>
-  </li>
-  <li>To build and run the SDN network described in the paper:
-    <ul>
-      <li> Navigate to code by running "cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/" </li>
-      <li> Run "sudo python advancedtopo_with_sdn.py in terminal" </li>
-      <li> You will then be prompted with the Mininet CLI, proceed with Step 8 </li>
-    </ul>
-  </li>
-  <li>To run the D-ITG flows for either network:
-    <ul>
-      <li> Using Mininet CLI, open xterm instances for each network host, including host 17 (ITG Log server) </li>
-      <li> Inside each xterm instance, go to where the D-ITG folder is installed E.g. "cd ~/D-ITG-2.8.1-r1023/bin" </li>
-      <li> Initiate Log host on h17, the ITGLog Server E.g. “./ITGLog” </li>
-      <li> Initiate each even host # from 2 to 16 as ITGRecv E.g. “./ITGRecv” </li>
-      <li> Initiate hosts 1, 3, 5 and 11 as ITGSend E.g. “./ITGSend [the_associated_quickflow_script>] -l [name_of_sender_log_file] -L 10.0.0.17 UDP -X 10.0.0.17  TCP -x [name_of_receiver_log_file] </li>
-      <li> All flows will be marked as finished when done </li>
-      <li> Terminate each ITGRecv host, followed by the ITGLog host (ITGSend hosts terminate by themselves after sending flows) E.g. “^C” (to terminate each ITGRecv and ITGLog instances) </li>
-      <li> NOTE:  If you have not moved the quickflow scripts from our code package into the D-ITG-2.8.2-r1023/bin folder, you will have to include the full path to their location (~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/D-ITG flow scripts/) </li>
-    </ul>
-  </li>
-  <li>To decode and analyze the produced log files and generate a report
-    <ul>
-      <li> Can utilize ITGDec on the desired log file from any host E.g. “./ITGDec [name_of_log_file]” </li>
-      <li> Inside each xterm instance, go to where the D-ITG folder is installed E.g. "cd ~/D-ITG-2.8.1-r1023/bin" </li>
-      <li> To generate .dat files, which are utilized by ITGPlot E.g. “./ITGDec [name_of_log_file] [QoS_metric] [time] [name_of_outputted_.dat_file]” where [QoS_metric] is either -p (packet loss), -j (jitter), -d (delay), -b (throughput), and where [time] is the sampling interval in milliseconds </li>
-    </ul>
-  </li>
-  <li>To generate the plots via ITGPlot
-    <ul>
-      <li> Run “~/D-ITG-2.8.1-r1023/src/ITGPlot/ITGplot  [input.dat] [number_of_the_flow]” where [number_of_the_flow] is an optional value, if nothing is indicated, all flows are plotted on the same graph </li>
-      <li> This generates a .eps file (the resulting plot file) </li>
-      <li> This file is located in “~/D-ITG-2.8.1-r1023/src/ITGPlot/” </li>
-    </ul>
-  </li>
-  <li> Once all simulation activities are completed, exit the Mininet CLI “mininet> exit” and run “sudo mn -c” prior to running any further simulations to end and delete the simulation. </li>
-</ol>
+6. Launch the Floodlight controller in Terminal (Only applies when you are running the SDN simulation).
+    * https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM
+7. To build and run the SDN network described in the paper:
+    * Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/`
+    * Run sudo python `advancedtopo_with_sdn.py` in terminal.
+    * You will then be prompted with the Mininet CLI, proceed with Step 8.
+8. To run the D-ITG flows for either network:
+    * Using Mininet CLI, open xterm instances for each network host, including host 17 (ITG Log server) 
+    * Inside each xterm instance, go to where the D-ITG folder is installed E.g. `cd ~/D-ITG-2.8.1-r1023/bin` 
+    * Initiate Log host on h17, the ITGLog Server E.g. `./ITGLog` 
+    * Initiate each even host # from 2 to 16 as ITGRecv E.g. `./ITGRecv`
+    * Initiate hosts 1, 3, 5 and 11 as ITGSend E.g. `./ITGSend [the_associated_quickflow_script>] -l [name_of_sender_log_file] -L 10.0.0.17 UDP -X 10.0.0.17  TCP -x [name_of_receiver_log_file]` 
+    * All flows will be marked as finished when done. 
+    * Terminate each ITGRecv host, followed by the ITGLog host (ITGSend hosts terminate by themselves after sending flows) E.g. `^C` (to terminate each ITGRecv and ITGLog instances). 
+    * NOTE: If you have not moved the quickflow scripts from our code package into the D-ITG-2.8.2-r1023/bin folder, you will have to include the full path to their location `(~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/D-ITG flow scripts/)`
+9. To decode and analyze the produced log files and generate a report:
+  * Can utilize ITGDec on the desired log file from any host E.g. `./ITGDec [name_of_log_file]`
+  * Inside each xterm instance, go to where the D-ITG folder is installed E.g. `cd ~/D-ITG-2.8.1-r1023/bin`
+  * To generate .dat files, which are utilized by ITGPlot E.g. `./ITGDec [name_of_log_file] [QoS_metric] [time] [name_of_outputted_.dat_file]` where [QoS_metric] is either -p (packet loss), -j (jitter), -d (delay), -b (throughput), and where [time] is the sampling interval in milliseconds.
+10. To generate the plots via ITGPlot:
+    * Run `~/D-ITG-2.8.1-r1023/src/ITGPlot/ITGplot [input.dat] [number_of_the_flow]` where [number_of_the_flow] is an optional value, if nothing is indicated, all flows are plotted on the same graph.
+    * This generates a .eps file (the resulting plot file).
+    * This file is located in `~/D-ITG-2.8.1-r1023/src/ITGPlot/`
+11. Once all simulation activities are completed, exit the Mininet CLI `mininet> exit` and run `sudo mn -c` prior to running any further simulations to end and delete the simulation.
