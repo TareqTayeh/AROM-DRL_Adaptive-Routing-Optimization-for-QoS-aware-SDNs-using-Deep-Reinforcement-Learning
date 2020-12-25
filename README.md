@@ -15,7 +15,7 @@ Software Defined Networking (SDN) has been recognized as the next-generation net
 ### Key Paper Ideas
 AROM-DRL Architecture:
 <p align="center">
-  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/AROMDRL.png" width="400">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/AROMDRL.png" width="600">
 </p>
 
 
