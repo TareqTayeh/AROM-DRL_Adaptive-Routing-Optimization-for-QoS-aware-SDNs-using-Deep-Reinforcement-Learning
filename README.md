@@ -15,17 +15,17 @@ Software Defined Networking (SDN) has been recognized as the next-generation net
 ### Key Paper Ideas
 AROM-DRL Architecture that utilizes a modified DDPG and the novel QoS-aware reward design:
 <p align="center">
-  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/AROMDRL.png" width="500">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/AROMDRL.png" width="600">
 </p>
 
 Benchmark non-SDN Architecture:
 <p align="center">
-  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/Non_SDN_Topo_Diagram.png" width="500">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/Non_SDN_Topo_Diagram.png" width="600">
 </p>
 
 Benchmark SDN Architecture:
 <p align="center">
-  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/SDN_Topo_Diagram.png" width="500">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/SDN_Topo_Diagram.png" width="600">
 </p>
 
 
