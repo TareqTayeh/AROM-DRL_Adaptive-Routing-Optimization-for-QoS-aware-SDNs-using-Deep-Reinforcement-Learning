@@ -15,9 +15,9 @@ Software Defined Networking (SDN) has been recognized as the next-generation net
 ### User Manual
 This is all found in `Code_User_Manual`.
 1. Launch Oracle VM Virtual box, followed by launching the Floodlight-Ubuntu VM, which is already configured with Mininet v.2.2.1, Floodlight v1.1, and OpenvSwitch. 
-  *  https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM
+    *  https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM
 2. Upgrade Floodlight v1.1 to Floodlight v1.2
-  * https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide
+    * https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide
 3. Download and install D-ITG
   * http://sdnopenflow.blogspot.com/2015/05/using-of-d-itg-traffic-generator-in.html
 4. Place our code folder (or git clone repo) inside the launched VM
