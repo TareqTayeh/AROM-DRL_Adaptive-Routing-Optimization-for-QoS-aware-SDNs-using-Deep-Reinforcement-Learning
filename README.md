@@ -34,7 +34,11 @@ This is all found in `Code_User_Manual`.
   <li>Place our code folder (or git clone repo) inside the launched VM </li>
   <li>To build and run the non-SDN network described in the paper:
     <ul>
-      <li> Navigate to code by running ```cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/``` </li>
+      <li> Navigate to code by running 
+      ```
+      cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/
+      ``` 
+      </li>
       <li> Run `sudo python advancedtopo_no_sdn.py` in terminal </li>
       <li> Once the network is built, you will be prompted with the Mininet CLI. Run `sh ovs-ofctl add-flow [switch] action=normal`  in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: `sh ovs-ofctl add-flow s1 action=normal`  </li>
       <li> Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo </li>
