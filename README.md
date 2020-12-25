@@ -26,5 +26,31 @@ This is all found in `Code_User_Manual`.
   		<li> https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide </li>
   	</ul>
   </li>
-  
+  <li>Download and install D-ITG
+    <ul>
+      <li> http://sdnopenflow.blogspot.com/2015/05/using-of-d-itg-traffic-generator-in.html </li>
+    </ul>
+  </li>
+  <li>Place our code folder (or git clone repo) inside the launched VM </li>
+  <li>To build and run the non-SDN network described in the paper:
+    <ul>
+      <li> Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/` </li>
+      <li> Run `sudo python advancedtopo_no_sdn.py` in terminal </li>
+      <li> Once the network is built, you will be prompted with the Mininet CLI. Run `sh ovs-ofctl add-flow <switch> action=normal`  in the Mininet CLI for every single switch (s1, s2, … , s15) to manually add flows to the flow table and turn them into normal L2 devices. E.g. for switch 1: `sh ovs-ofctl add-flow s1 action=normal`  </li>
+      <li> Now proceed to step 8. Otherwise, proceed to step 6 to build SDN topo </li>
+    </ul>
+  </li>
+  <li>Launch the Floodlight controller in Terminal (Only applies when you are running the SDN simulation)
+    <ul>
+      <li> https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/8650780/Floodlight+VM </li>
+    </ul>
+  </li>
+  <li>Place our code folder (or git clone repo) inside the launched VM </li>
+  <li>To build and run the SDN network described in the paper:
+    <ul>
+      <li> Navigate to code by running `cd ~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/` </li>
+      <li> Run `sudo python advancedtopo_with_sdn.py` in terminal </li>
+      <li> You will then be prompted with the Mininet CLI, proceed with Step 8 </li>
+    </ul>
+  </li>
 </ol>
