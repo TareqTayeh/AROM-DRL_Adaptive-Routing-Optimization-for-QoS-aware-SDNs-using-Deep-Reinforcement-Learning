@@ -13,7 +13,7 @@
 Software Defined Networking (SDN) has been recognized as the next-generation networking paradigm that decouples the data plane and control plane, allowing network resources to be managed by a logically centralized controller. The inclusion of Machine Learning (ML) techniques can improve network optimization and the automated provisioning of the network's service capabilities, as well as enhancing the SDN's ability to fulfil Quality of Service (QoS) requirements in a variety of applications. In particular, the recent emergence of Deep Reinforcement Learning (DRL) allowed more complex problems with high-dimensional state and action space to be solved, making them ideal for Routing Optimization (RO) in complex network environments with rapid changes in continuous time. In this paper, we introduce an Adaptive RO Model for QoS-aware SDNs using DRL (AROM-DRL). AROM-DRL dynamically considers various QoS parameters, such as latency, throughput, packet loss, and jitter, in combination with statically determined parameters, to generate a powerful and dynamically determined action-reward strategy for the DRL system as part of an iterative RO mechanism. In a QoS-aware SDN system, network operators and service providers can use AROM-DRL to assist in offering high-quality services to increase customer satisfaction and reduce customer churn. Future work will include an AROM-DRL implementation to be evaluated against both SDN and non-SDN benchmarks, which have been discussed, implemented, and evaluated in this paper.
 
 ### Key Paper Ideas
-##### AROM-DRL Architecture that utilizes a modified DDPG and the novel QoS-aware reward design:
+#### AROM-DRL Architecture that utilizes a modified DDPG and the novel QoS-aware reward design:
 <p align="center">
   <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/AROMDRL.png" width="600">
 </p>
@@ -23,19 +23,39 @@ Software Defined Networking (SDN) has been recognized as the next-generation net
   <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/Non_SDN_Topo_Diagram.png" width="600">
 </p>
 
-Benchmark SDN Architecture:
+#### Benchmark SDN Architecture:
 <p align="center">
   <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/SDN_Topo_Diagram.png" width="600">
 </p>
 
-D-ITG multi-flows traffic generatation scripts run in this work:
+#### D-ITG multi-flows traffic generatation scripts run in this work:
 <p align="center">
   <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/DITGMultiFlow_withKey.png" width="600">
 </p>
 
-Partial ITGDec report for multi-flows from Host 11 to Host 2:
+#### Partial ITGDec report for multi-flows from Host 11 to Host 2:
 <p align="center">
   <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/ITGDecExample.png" width="600">
+</p>
+
+#### Non-SDN vs SDN multi-flows:
+<p align="center">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/NonSDN_vs_SDN_multiHosts.png" width="600">
+</p>
+
+#### Non-SDN vs SDN aggregate time segment:
+<p align="center">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/NonSDN_vs_SDN_Aggregate_timeSeg.png" width="600">
+</p>
+
+#### Non-SDN ITGPlots
+<p align="center">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/non_SDN_ITGPlots.png" width="600">
+</p>
+
+#### SDN ITGPlots
+<p align="center">
+  <img src="https://github.com/TareqTayeh/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/blob/master/figures/SDN_ITGPlots.png" width="600">
 </p>
 
 
