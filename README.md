@@ -42,9 +42,9 @@ This is all found in `Code_User_Manual`.
     * Terminate each ITGRecv host, followed by the ITGLog host (ITGSend hosts terminate by themselves after sending flows) E.g. `^C` (to terminate each ITGRecv and ITGLog instances). 
     * NOTE: If you have not moved the quickflow scripts from our code package into the D-ITG-2.8.2-r1023/bin folder, you will have to include the full path to their location `(~/AROM-DRL_Adaptive-Routing-Optimization-for-QoS-aware-SDNs-using-Deep-Reinforcement-Learning/code/D-ITG flow scripts/)`
 9. To decode and analyze the produced log files and generate a report:
-  * Can utilize ITGDec on the desired log file from any host E.g. `./ITGDec [name_of_log_file]`
-  * Inside each xterm instance, go to where the D-ITG folder is installed E.g. `cd ~/D-ITG-2.8.1-r1023/bin`
-  * To generate .dat files, which are utilized by ITGPlot E.g. `./ITGDec [name_of_log_file] [QoS_metric] [time] [name_of_outputted_.dat_file]` where [QoS_metric] is either -p (packet loss), -j (jitter), -d (delay), -b (throughput), and where [time] is the sampling interval in milliseconds.
+    * Can utilize ITGDec on the desired log file from any host E.g. `./ITGDec [name_of_log_file]`
+    * Inside each xterm instance, go to where the D-ITG folder is installed E.g. `cd ~/D-ITG-2.8.1-r1023/bin`
+    * To generate .dat files, which are utilized by ITGPlot E.g. `./ITGDec [name_of_log_file] [QoS_metric] [time] [name_of_outputted_.dat_file]` where [QoS_metric] is either -p (packet loss), -j (jitter), -d (delay), -b (throughput), and where [time] is the sampling interval in milliseconds.
 10. To generate the plots via ITGPlot:
     * Run `~/D-ITG-2.8.1-r1023/src/ITGPlot/ITGplot [input.dat] [number_of_the_flow]` where [number_of_the_flow] is an optional value, if nothing is indicated, all flows are plotted on the same graph.
     * This generates a .eps file (the resulting plot file).
